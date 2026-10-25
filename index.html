@@ -1,1 +1,134 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket Option AI Trader</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f4f7ff;
+    }
+    header {
+      padding: 22px 16px;
+      background: #151d32;
+      border-bottom: 1px solid #283451;
+    }
+    h1 { margin: 0; font-size: 23px; }
+    header p { color: #9eacc7; margin-bottom: 0; }
+    main { max-width: 650px; margin: auto; padding: 18px; }
+    .card {
+      background: #151d32;
+      border: 1px solid #283451;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    label { display: block; margin: 12px 0 7px; color: #bdc9e0; }
+    select, button {
+      width: 100%;
+      padding: 13px;
+      border-radius: 9px;
+      border: 1px solid #354463;
+      font-size: 16px;
+    }
+    select { background: #0b1020; color: white; }
+    button {
+      margin-top: 12px;
+      background: #3767f5;
+      color: white;
+      border: 0;
+      font-weight: bold;
+    }
+    button:active { opacity: .8; }
+    .signal { text-align: center; padding: 22px 8px; }
+    #result { font-size: 30px; font-weight: bold; margin: 12px; }
+    .muted { color: #9eacc7; line-height: 1.5; }
+    .warning {
+      color: #ffd38b;
+      background: #302719;
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    footer { text-align: center; color: #8492ad; padding: 18px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Pocket Option AI Trader</h1>
+    <p>Market analysis dashboard</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Trading Setup</h2>
+      <label for="pair">Currency pair</label>
+      <select id="pair">
+        <option>EUR/USD</option>
+        <option>GBP/USD</option>
+        <option>USD/JPY</option>
+        <option>AUD/USD</option>
+        <option>EUR/JPY</option>
+      </select>
+
+      <label for="timeframe">Analysis timeframe</label>
+      <select id="timeframe">
+        <option value="1 minute">1 minute</option>
+        <option value="5 minutes">5 minutes</option>
+        <option value="15 minutes">15 minutes</option>
+      </select>
+
+      <button onclick="analyze()">Analyze Market</button>
+    </section>
+
+    <section class="card signal">
+      <p class="muted">Analysis result</p>
+      <div id="result">WAIT</div>
+      <p id="details" class="muted">
+        Select your market and tap Analyze Market.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Account Connection</h2>
+      <p class="muted">
+        Actual trading requires an officially supported Pocket Option
+        integration. No account is connected on this demo page.
+      </p>
+      <button onclick="connectionInfo()">Pocket Option Trading</button>
+      <p id="connection" class="muted"></p>
+    </section>
+
+    <p class="warning">
+      Demo only: this page does not receive live prices or generate
+      real AI signals. Its WAIT result is a placeholder, not a forecast.
+      Never enter your Pocket Option password or API secret on this page.
+    </p>
+  </main>
+
+  <footer>AI Trader · Demo dashboard</footer>
+
+  <script>
+    function analyze() {
+      document.getElementById("result").textContent = "WAIT";
+      document.getElementById("details").textContent =
+        "Selected " + document.getElementById("pair").value +
+        " · " + document.getElementById("timeframe").value +
+        ". Live market data is not connected yet.";
+    }
+
+    function connectionInfo() {
+      document.getElementById("connection").textContent =
+        "Account connection is not configured. Verify an official " +
+        "Pocket Option API or authorized integration before connecting.";
+    }
+  </script>
+</body>
+</html>
+
